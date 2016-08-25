@@ -1,7 +1,19 @@
 #!/bin/bash
+
 # Build
+echo "--- Building Website"
 middleman build
+if [ $? -ne 0 ]
+then
+  echo "^^^ +++"
+  exit 1
+fi
+
 # Deploy everything to S3
-aws s3 sync ./build/ s3://istrumpprez.com
-# Invalidate
-aws cloudfront create-invalidation --distribution-id EWJT7RJQU1ZA3 --invalidation-batch file://scripts/invbatch.json
+echo "--- Deploying Website"
+s3_website push
+if [ $? -ne 0 ]
+then
+  echo "^^^ +++"
+  exit 1
+fi

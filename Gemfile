@@ -13,13 +13,16 @@ source 'https://rubygems.org' do
   gem 'middleman', '>= 4.0.0'
   gem 'middleman-livereload'
 
-  # Extra stuff for AWS Support
-  gem 'middleman-aws'
-  gem 'middleman-s3_sync'
+  # # Extra stuff for AWS Support
+  # gem 'middleman-aws'
+  # gem 'middleman-s3_sync'
+  #
+  # # waiting for the next release to support middleman 4 ftw
+  # gem 'middleman-cloudfront',
+  #   git: 'https://github.com/andrusha/middleman-cloudfront.git',
+  #   branch: 'master'
 
-  # waiting for the next release to support middleman 4 ftw
-  gem 'middleman-cloudfront',
-    git: 'https://github.com/andrusha/middleman-cloudfront.git',
-    branch: 'master'
+  gem 's3_website'
+
   gem 'mime-types'
 end
