@@ -1,0 +1,81 @@
+
+%h1 Presidential Victory Predictor
+%h2 Methodolgy
+%p Using our patented multi-layered perceptronics&trade;, we analyse the latest polls, Twitter sentiment and media patterns to accurately determine the likely victor of the presidential election.
+%h2 Current Prediction
+%p
+  %span.hide-me Calculating...
+  %span.unhide-me.hidden Crooked Clinton has a
+  %span#prediction-result
+  \%
+  %span.unhide-me.hidden chance of becoming the next President
+= image_tag 'clinton-winning.jpg', alt: 'Clinton is ahead!', class: 'hidden unhide-me'
+:coffee
+  sleep = (ms) ->
+    start = new Date().getTime()
+    continue while new Date().getTime() - start < ms
+  (($) ->
+    $.fn.extend numAnim: (options) ->
+      if !@length
+        return false
+      @defaults =
+        endAt: 2560
+        numClass: 'autogen-num'
+        duration: 5
+        interval: 90
+      settings = $.extend({}, @defaults, options)
+      $num = $('<span/>', 'class': settings.numClass)
+      @each ->
+        $this = $(this)
+        # Wrap each number in a tag.
+        frag = document.createDocumentFragment()
+        numLen = settings.endAt.toString().length
+        x = 0
+        while x < numLen
+          rand_num = Math.floor(Math.random() * 10)
+          frag.appendChild $num.clone().text(rand_num)[0]
+          x++
+        $this.empty().append frag
+
+        get_next_num = (num) ->
+          ++num
+          if num > 9
+            return 0
+          num
+
+        # Iterate each number.
+        $this.find('.' + settings.numClass).each ->
+          `var $num`
+          $num = $(this)
+          num = parseInt($num.text())
+          interval = setInterval((->
+            num = get_next_num(num)
+            $num.text num
+            return
+          ), settings.interval)
+          setTimeout (->
+            clearInterval interval
+            return
+          ), settings.duration * 1000 - (settings.interval)
+          return
+        setTimeout (->
+          $this.text settings.endAt.toString()
+          return
+        ), settings.duration * 1000
+        return
+    return
+  ) jQuery
+
+  $ ->
+    $("#prediction-result").numAnim({
+      endAt: "65",
+      duration: 3
+    })
+    setTimeout (->
+      $(".unhide-me").removeClass('hidden')
+      return
+    ), 4000
+    setTimeout (->
+      $(".hide-me").addClass('hidden')
+      return
+    ), 4000

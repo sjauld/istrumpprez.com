@@ -23,6 +23,9 @@ configure :development do
   activate :livereload
 end
 
+# Sprockets
+activate :sprockets
+
 ###
 # Helpers
 ###

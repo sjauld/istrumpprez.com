@@ -11,6 +11,11 @@
 %body{class: page_classes}
   .left-runner
   .container
+    .header
+      %ul
+        %li Menu:
+        %li=link_to 'Home', '/'
+        %li=link_to 'Predictor', '/predictor.html'
     = yield
   .right-runner
   %footer &copy; 2016 IsTrumpPrez.com
