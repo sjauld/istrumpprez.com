@@ -11,7 +11,7 @@ index_document: index.html
 # error_document: error.html
 
 max_age:
-  "index.html": 300
+  "*.html": 300
   "*": <%= 60 * 60 * 24 * 31 %>
 
 gzip:
