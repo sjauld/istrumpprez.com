@@ -1,0 +1,35 @@
+name: Albert Einstein
+nickname: Einstein
+description: Who said what - the great modern physicist who formulated the theory of relativity, or America's favorite billionnaire?
+image: einstein.jpg
+quotations:
+  -
+    quote: God does not play dice with the universe
+    author: Einstein
+  -
+    quote: Try not to become a man of success, but rather try to become a man of value.
+    author: Einstein
+  -
+    quote: Great spirits have always encountered violent opposition from mediocre minds.
+    author: Einstein
+  -
+    quote: Everything should be made as simple as possible, but not simpler.
+    author: Einstein
+  -
+    quote: Anyone who has never made a mistake has never tried anything new.
+    author: Einstein
+  -
+    quote: The world is a dangerous place to live; not because of the people who are evil, but because of the people who don't do anything about it.
+    author: Einstein
+  -
+    quote: The right of self-defence doesn't stop at the end of your driveway
+    author: Trump
+  -
+    quote: There is no daylight between America and the state of Israel
+    author: Trump
+  -
+    quote: Imagine a world where our foes can no longer use energy as a weapon
+    author: Trump
+  -
+    quote: When I think I’m right, nothing bothers me.
+    author: Trump

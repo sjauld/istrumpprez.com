@@ -145,3 +145,23 @@ a:hover, a:active {
 .hidden {
   display: none;
 }
+
+// Quiz classes
+.disabled {
+  -webkit-filter: grayscale(.5) blur(3px);
+  filter: grayscale(.5) blur(3px);
+}
+
+.incorrect {
+  -webkit-filter: blur(0px) sepia() saturate(1000%) hue-rotate(310deg);
+  filter: blur(0px) sepia() saturate(1000%) hue-rotate(310deg);
+}
+
+.correct {
+  -webkit-filter: blur(0px) sepia() saturate(1000%) hue-rotate(100deg);
+  filter: blur(0px) sepia() saturate(1000%) hue-rotate(100deg);
+}
+
+.quiz-quotations li {
+  list-style-position: inside;
+}

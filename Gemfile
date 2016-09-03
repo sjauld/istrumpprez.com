@@ -12,6 +12,9 @@ source 'https://rubygems.org' do
 
   # Sprockets
   gem 'middleman-sprockets', '~> 4.0'
+
+  # Blog support for quizzes
+  gem 'middleman-blog'
 end
 
 source 'https://rails-assets.org' do
