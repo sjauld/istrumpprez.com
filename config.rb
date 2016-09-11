@@ -26,6 +26,9 @@ end
 # Sprockets
 activate :sprockets
 
+# Asset hashing
+activate :asset_hash, ignore: /^images/
+
 ###
 # Helpers
 ###
@@ -44,4 +47,5 @@ configure :build do
 
   # Minify Javascript on build
   activate :minify_javascript
+
 end
