@@ -29,6 +29,12 @@ activate :sprockets
 # Asset hashing
 activate :asset_hash, ignore: /^images/
 
+# Quizzes
+data.quizzes.each do |quiz, data|
+  proxy "/quiz/#{quiz}.html", '/quiz/template.html',
+        locals: {quiz: data}, ignore: true
+end
+
 ###
 # Helpers
 ###

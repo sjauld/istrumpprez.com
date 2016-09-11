@@ -1,0 +1,7 @@
+%h1 Quizzes
+.quiz-index
+  %ul
+    -data.quizzes.each do |quiz, data|
+      %li
+        %a{href: "/quiz/#{quiz}.html"}
+          =image_tag data.image, alt: data.nickname, title: data  .name
