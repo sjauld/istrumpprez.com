@@ -5,11 +5,25 @@
 %h2 Current Prediction
 %p
   %span.hide-me Calculating...
-  %span.unhide-me.hidden Crooked Clinton has a
-  %span#prediction-result
-  \%
-  %span.unhide-me.hidden chance of becoming the next President
-= image_tag 'clinton-winning.jpg', alt: 'Clinton is ahead!', class: 'hidden unhide-me'
+  %span.hide-me#randomiser
+  .hidden#clinton
+    .text
+      Crooked Clinton has a
+      %span#clinton-result
+      \%
+      chance of becoming the next President
+    = image_tag 'clinton-winning.jpg', alt: 'Clinton is ahead!'
+  .hidden#trump
+    .text
+      Donald J. Trump has a
+      %span#trump-result
+      \%
+      chance of becoming the next President
+    = image_tag 'trump-thoughtful.jpg', alt: 'It\'s Trump Time!'
+  .hidden#draw
+    .text
+      It's neck and neck!
+    = image_tag 'miley.jpg', alt: 'No result!'
 :coffee
   sleep = (ms) ->
     start = new Date().getTime()
@@ -67,15 +81,40 @@
   ) jQuery
 
   $ ->
-    $("#prediction-result").numAnim({
-      endAt: "59.0",
-      duration: 3
-    })
-    setTimeout (->
-      $(".unhide-me").removeClass('hidden')
-      return
-    ), 4000
-    setTimeout (->
-      $(".hide-me").addClass('hidden')
-      return
-    ), 4000
+    -# grab ze data
+    predictor_url = 'https://9cv3znejwa.execute-api.ap-southeast-2.amazonaws.com/prod'
+    $.getJSON(predictor_url).done (data) ->
+      if data.trump_chance < 50
+        -# ILLARY!
+        $("#randomiser, #clinton-result").numAnim({
+          endAt: (100 - data.trump_chance),
+          duration: 3
+        })
+        setTimeout (->
+          $("#clinton").removeClass('hidden')
+          return
+        ), 4000
+      else if data.trump_chance > 50
+        -# TRUMP!
+        $("#randomiser, #trump-result").numAnim({
+          endAt: (data.trump_chance),
+          duration: 3
+        })
+        setTimeout (->
+          $("#trump").removeClass('hidden')
+          return
+        ), 4000
+      else
+        -# TRUMP!
+        $("#randomiser").numAnim({
+          endAt: (data.trump_chance),
+          duration: 3
+        })
+        setTimeout (->
+          $("#draw").removeClass('hidden')
+          return
+        ), 4000
+      setTimeout (->
+        $(".hide-me").addClass('hidden')
+        return
+      ), 4000
